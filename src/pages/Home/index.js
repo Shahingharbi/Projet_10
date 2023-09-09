@@ -13,7 +13,8 @@ import Modal from "../../containers/Modal";
 import { useData } from "../../contexts/DataContext";
 
 const Page = () => {
-  const {last} = useData()
+  const { data } = useData(); // pour obtenir les données
+  const last = data?.events?.[data.events.length - 1]; // verifie si data + events existent
   return <>
     <header>
       <Menu />
@@ -115,18 +116,16 @@ const Page = () => {
     </main>
     <footer className="row">
       <div className="col presta">
-        <h3>Notre derniére prestation</h3>
-        {last && last.cover ? (
-          <EventCard
-          imageSrc={last.cover}
-          title={last.title}
-          date={new Date(last.date)}
+        <h3>Notre derniére prestation</h3> 
+        
+       {last && 
+        <EventCard
+          imageSrc={last?.cover}
+          title={last?.title}
+          date={new Date(last?.date)}
           small
           label="boom"
-        />
-        ) : (
-          <p>Aucune prestation disponible</p>
-        )}
+        />}
         </div>
        
       <div className="col contact">
