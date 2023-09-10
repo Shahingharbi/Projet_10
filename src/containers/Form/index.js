@@ -20,7 +20,7 @@ const Form = ({ onSuccess, onError }) => {
         await mockContactApi();
         setSending(false);
         onSuccess() ;// ajout de la fonction onSuccess
-        formRef.current.reset()
+        formRef.current.reset() // renitialiser le formulaire 
       } catch (err) {
         setSending(false);
         onError(err);
